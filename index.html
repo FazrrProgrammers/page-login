@@ -1,45 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Modern Purple</title>
+  <title>Login - Neon Purple</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     @keyframes slideFade {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-slide-fade {
-      animation: slideFade 0.6s ease-out forwards;
-    }
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(270deg, #ffffff33, #ffffffaa);
+  background-size: 400% 400%;
+  z-index: 0;
+  border-radius: 1rem;
+  animation: borderGlow 4s linear infinite;
+}
+
+.glow-border > * {
+  position: relative;
+  z-index: 1;
+}
+
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#1f0037] via-[#2d004d] to-[#f5f5f5] min-h-screen flex items-center justify-center font-sans">
-  <div class="bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl rounded-2xl px-8 py-10 w-full max-w-md animate-slide-fade">
+<body class="bg-gradient-to-br from-[#250040] via-[#6b00b3] to-[#ffffff] min-h-screen flex items-center justify-center font-sans">
+  <div class="glow-border backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-2xl px-8 py-10 w-full max-w-md animate-slide-fade">
     <h2 class="text-3xl font-bold text-center text-white mb-6">Welcome Back</h2>
     <form class="space-y-6">
       <div>
         <label class="block text-sm font-semibold text-white mb-1">Username</label>
         <div class="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 focus-within:ring-2 focus-within:ring-purple-400 transition-all">
           <i class="fas fa-user text-white/70 mr-3"></i>
-          <input type="text" placeholder="username"
-            class="bg-transparent w-full focus:outline-none text-white placeholder-white/60"/>
+          <input type="text" placeholder="yourusername" class="bg-transparent w-full focus:outline-none text-white placeholder-white/60"/>
         </div>
       </div>
       <div>
         <label class="block text-sm font-semibold text-white mb-1">Password</label>
         <div class="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 focus-within:ring-2 focus-within:ring-purple-400 transition-all">
           <i class="fas fa-lock text-white/70 mr-3"></i>
-          <input type="password" placeholder="••••••••"
-            class="bg-transparent w-full focus:outline-none text-white placeholder-white/60"/>
+          <input type="password" placeholder="••••••••" class="bg-transparent w-full focus:outline-none text-white placeholder-white/60"/>
         </div>
       </div>
       <div class="flex items-center justify-between text-sm text-white/80">
@@ -49,8 +65,7 @@
         </label>
         <a href="#" class="text-purple-200 hover:underline font-medium">Forgot?</a>
       </div>
-      <button type="submit"
-        class="w-full bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-bold py-2 px-4 rounded-xl shadow-md transition duration-300">
+      <button type="submit" class="w-full bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-2 px-4 rounded-xl shadow-md transition duration-300">
         Login
       </button>
     </form>
